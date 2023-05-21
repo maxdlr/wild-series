@@ -1,0 +1,20 @@
+// assets/styles/global.scss
+
+// customize some Bootstrap variables
+$primary: #262556;
+$secondary: #DEE9FF;
+$accent: #FF7BC2;
+$light: white;
+$black: black;
+
+// the ~ allows you to reference things in node_modules
+@import "~bootstrap/scss/bootstrap";
+
+body {
+    background-color: #262556;
+    color: $secondary;
+}
+
+.btn-secondary:hover {
+    background-color: $accent;
+}
