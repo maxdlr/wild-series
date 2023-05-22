@@ -11,7 +11,7 @@ $black: black;
 @import "~bootstrap/scss/bootstrap";
 
 body {
-    background-color: #262556;
+    background-color: $primary;
     color: $secondary;
 }
 
