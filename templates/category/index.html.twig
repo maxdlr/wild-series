@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CategoryController!{% endblock %}
+
+{% block body %}
+
+<section class="container d-flex flex-column justify-content-center align-content-center my-5">
+    {% for category in categories %}
+        <a href="{{ path("category_show", {categoryName:category.name}) }}"
+        class="text-center text-light">
+            <h1>
+                {{category.name}}
+            </h1>
+        </a>
+    {% endfor %}
+</section>
+
+{% endblock %}

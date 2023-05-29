@@ -1,25 +1,13 @@
 <nav class="navbar justify-content-center">
     <a href="/" class="btn btn-secondary border-0 rounded-pill mx-1">Home</a>
 
-    <div class="dropdown">
-        <button 
-        class="btn btn-secondary dropdown-toggle" 
-        type="button" 
-        id="dropdownMenuButton" 
-        data-toggle="dropdown" 
-        aria-haspopup="true" 
-        aria-expanded="false">
-            Categories
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="dropdownMenu">
-            <a class="dropdown-item" href="#">Action</a>
-            
-        </div>
-    </div>
-
-    <div 
-    class="btn btn-secondary border-0 rounded-pill mx-1"
-    id="category-ddm">Categories</div>
-
     <a href="/program" class="btn btn-secondary border-0 rounded-pill mx-1">Programs</a>
+
+    <div class="btn-group">
+        <a href="{{ path("category_index") }}" type="button" class="btn btn-danger">Categories</a>
+        <button type="button" id="dropdownMenuButton" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="sr-only"></span>
+        </button>
+
+    <div class="dropdown-menu" id="dropdownMenu"></div>
 </nav>

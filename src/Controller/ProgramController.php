@@ -28,7 +28,7 @@ class ProgramController extends AbstractController
     }
 
     #[Route(
-        'show/{id}/', 
+        '/{id}/', 
         requirements: ['id'=>'\d+'], 
         methods: ['GET'],
         name: 'show', 

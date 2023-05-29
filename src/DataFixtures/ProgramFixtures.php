@@ -12,22 +12,23 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
 {
     static array $categories = [
         'category_Action',
+        'category_Aventure',
+        'category_Fantastique',
         'category_Horreur',
         'category_Comedie',
-        'category_Fantastique',
-        'category_Aventure',
+        'category_Art Martiaux'
     ];
 
     public function load(ObjectManager $manager): void
     {
         $faker = Faker\Factory::create();
 
-        for ($i=0; $i < 5; $i++)
+        for ($i=0; $i < 60; $i++)
         {
             $program = new Program();
             $program->setTitle($faker->word());
             $program->setSynopsis($faker->sentence());
-            $program->setCategory($this->getReference(self::$categories[$i]));
+            $program->setCategory($this->getReference(self::$categories[$faker->numberBetween(0,5)]));
             $program->setPoster($faker->imageUrl(300,300,$program->getTitle(), true));
             $manager->persist($program);
         }

@@ -1,10 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Wild Series{% endblock %}
+{% block title %}Hello CategoryController!{% endblock %}
 
 {% block body %}
+
     <section class="container-fluid">
-        <h1>Tous les programmes</h1>
+        <h1>Tous les programmes de la catégorie {{ category.name }}</h1>
 
         <div class="d-flex flex-wrap justify-content-center align-items-baseline">
             {% for program in programs %}

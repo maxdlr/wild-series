@@ -19,16 +19,15 @@ const categoryDdButton = document.getElementById('dropdownMenuButton');
 const categoryDdMenu = document.getElementById('dropdownMenu')
 
 function addCategory(categories) {
-
-    const categoriesList = document.createElement('ul');
-    categoryDdMenu.append(categoriesList);
     
     for (const category of categories) {
 
-        let categoryDdItem = document.createElement('li');
+        let categoryDdItem = document.createElement('a');
         categoryDdItem.innerHTML = category;
+        categoryDdItem.href = '{{ path("category_show", {categoryName:category.name}) }}';
+
         
-        categoriesList.append(categoryDdItem);
+        categoryDdMenu.append(categoryDdItem);
     }
 
 }
