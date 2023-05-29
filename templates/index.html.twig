@@ -3,5 +3,18 @@
 {% block title %}Wild Series{% endblock %}
 
 {% block body %}
-<h1>Bienvenue</h1>
+    <section class="container-fluid">
+        <img src="{{ headerImgUrl }}" alt="homepage header image">
+    </section>
+
+    <section class="container d-flex justify-content-evenly align-items-center">
+
+        {% for program in programs %}
+            <div class="card d-flex justify-content-center align-items-baseline">
+                <img src="{{ programImgUrl }}" alt="">
+            </div>
+            {% endfor %}
+
+    </section>
+
 {% endblock %}

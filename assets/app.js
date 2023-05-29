@@ -11,9 +11,31 @@ import './styles/app.scss';
 // start the Stimulus application
 import './bootstrap';
 
+require('bootstrap');
 
 console.log('Hello Webpack Encore')
 
-// app.js
+const categoryDdButton = document.getElementById('dropdownMenuButton');
+const categoryDdMenu = document.getElementById('dropdownMenu')
 
-require('bootstrap');
+function addCategory(categories) {
+
+    const categoriesList = document.createElement('ul');
+    categoryDdMenu.append(categoriesList);
+    
+    for (const category of categories) {
+
+        let categoryDdItem = document.createElement('li');
+        categoryDdItem.innerHTML = category;
+        
+        categoriesList.append(categoryDdItem);
+    }
+
+}
+
+categoryDdButton.addEventListener('click', function(){
+    fetch('/get-categories')
+    .then(response => response.json())
+    .then(data => addCategory(data))
+    .catch(err => alert('fetch error'));
+})
