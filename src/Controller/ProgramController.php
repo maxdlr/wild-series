@@ -2,6 +2,8 @@
 // src/Controller/ProgramController.php
 namespace App\Controller;
 
+use App\Entity\Program;
+use App\Form\ProgramType;
 use App\Repository\CategoryRepository;
 use App\Repository\ProgramRepository;
 use Symfony\Component\Routing\Annotation\Route;
@@ -36,11 +38,9 @@ class ProgramController extends AbstractController
 
     public function show(
         int $id = 1,
-        CategoryRepository $categoryRepository,
         ProgramRepository $programRepository
         ) :Response
     {
-        $categories = $categoryRepository->findAll();
         $program = $programRepository->findOneById($id);
 
         if (!$program)
@@ -52,8 +52,20 @@ class ProgramController extends AbstractController
         
         return $this->render('program/show.html.twig', [
             'id' => $id,
-            'categories' => $categories,
             'program' => $program,
         ]);
+    }
+
+    #[Route('/create/', name: 'create')]
+    public function create():Response
+    {
+        $program = new Program;
+
+        $form = $this->createForm(ProgramType::class, $program);
+
+        return $this->render('program/new.html.twig', [
+            'form' => $form,
+        ]);
+
     }
 }

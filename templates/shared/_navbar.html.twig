@@ -1,7 +1,9 @@
 <nav class="navbar justify-content-center">
     <a href="/" class="btn btn-secondary border-0 mx-1">Home</a>
 
-    <a href="/program" class="btn btn-secondary border-0 mx-1">Programs</a>
+    <a href="{{path("program_index")}}" class="btn btn-secondary border-0 mx-1">Programmes</a>
+
+    <a href="{{path("program_create")}}" class="btn btn-secondary border-0 mx-1">Créer un programme</a>
 
     <div class="btn-group">
         <a href="{{ path("category_index") }}" type="button" class="btn btn-secondary ms-1">Categories</a>
