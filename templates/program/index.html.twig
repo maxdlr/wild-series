@@ -8,13 +8,16 @@
 
         <div class="d-flex flex-wrap justify-content-center align-items-baseline">
             {% for program in programs %}
-                <a href="{{ path("program_show", {id:program.id}) }}" class="text-light">
-                    <div class="prog-card d-flex flex-column justify-content-start align-self-center m-3">
+                <div class="prog-card d-flex flex-column justify-content-start align-self-center m-3">
+                    <a href="{{ path("program_show", {id:program.id}) }}" class="text-light">
                         <h2>{{ program.title }}</h2>
                         <img src="{{ program.poster }}" class="rounded-4" alt="Image du film {{ program.title }}">
                         <p>{{ program.synopsis }}</p>
-                    </div>
-                </a>
+                    </a>
+                    <form action="{{ path("program_delete", {id:program.id}) }}" method="DELETE">
+                        <input type="submit" value="Supprimer" class="btn btn-danger">
+                    </form>
+                </div>
             {% endfor %}
         </div>
     </section>
