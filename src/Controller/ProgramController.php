@@ -8,6 +8,7 @@ use App\Repository\CategoryRepository;
 use App\Repository\ProgramRepository;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 #[Route('/program', name: 'program_')]
@@ -57,15 +58,27 @@ class ProgramController extends AbstractController
     }
 
     #[Route('/create/', name: 'create')]
-    public function create():Response
+    public function create(Request $request, ProgramRepository $programRepository):Response
     {
         $program = new Program;
-
         $form = $this->createForm(ProgramType::class, $program);
+
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $programRepository->save($program, true);
+            return $this->redirectToRoute('program_index');
+        }
 
         return $this->render('program/new.html.twig', [
             'form' => $form,
         ]);
 
+    }
+
+    #[Route('/delete/{id}', name: 'delete')]
+    public function delete(Program $program):Response
+    {
+        return new Response('A supprimé');
     }
 }

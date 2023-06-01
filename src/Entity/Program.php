@@ -6,6 +6,7 @@ use App\Repository\ProgramRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ProgramRepository::class)]
@@ -17,6 +18,8 @@ class Program
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: 'Le titre du programme est obligatoire')]
+    // Do not forget about "use Symfony\Component\Validator\Constraints as Assert; uptop"
     private ?string $title = null;
 
     #[ORM\Column(type: Types::TEXT)]
