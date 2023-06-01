@@ -23,16 +23,14 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
     {
         $faker = Faker\Factory::create();
 
-        for ($i=0; $i < 60; $i++)
-        {
             $program = new Program();
             $program->setTitle($faker->word());
             $program->setSynopsis($faker->sentence());
             $program->setCategory($this->getReference(self::$categories[$faker->numberBetween(0,5)]));
             $program->setPoster($faker->imageUrl(300,300,$program->getTitle(), true));
-            $this->addReference('program_' . $program->getTitle(), $program);
+            $this->addReference('program_aut', $program);
             $manager->persist($program);
-        }
+
         $manager->flush();
     }
 
