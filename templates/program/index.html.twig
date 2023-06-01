@@ -5,6 +5,9 @@
 {% block body %}
     <section class="container-fluid">
         <h1>Tous les programmes</h1>
+                        <pre>
+                            {{ dump(programs) }}
+                        </pre>
 
         <div class="d-flex flex-wrap justify-content-center align-items-baseline">
             {% for program in programs %}
@@ -13,6 +16,7 @@
                         <h2>{{ program.title }}</h2>
                         <img src="{{ program.poster }}" class="rounded-4" alt="Image du film {{ program.title }}">
                         <p>{{ program.synopsis }}</p>
+
                     </a>
                     <form action="{{ path("program_delete", {id:program.id}) }}" method="DELETE">
                         <input type="submit" value="Supprimer" class="btn btn-danger">

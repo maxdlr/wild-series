@@ -10,13 +10,6 @@ use Faker;
 
 class EpisodeFixtures extends Fixture implements DependentFixtureInterface
 {
-    static array $seasons = [
-        'Season_1',
-        'Season_2',
-        'Season_3',
-        'Season_4',
-        'Season_5',
-    ];
 
     public function load(ObjectManager $manager): void
     {
@@ -25,14 +18,14 @@ class EpisodeFixtures extends Fixture implements DependentFixtureInterface
         for ($i=1; $i <= 60; $i++) { 
             
             $episode = new Episode();
-            $episode->setTitle($faker->word());
-            $episode->setSynopsis($faker->paragraph(10));
-            for ($x=1; $x <= 5; $x++) { 
-                $episode->setNumber($x);
+            for ($x=1; $x <= 5; $x++) {
+                $episode->setTitle($faker->word());
+                $episode->setSynopsis($faker->paragraph(10));
+                $episode->setNumber($i.$x);
+                $episode->setSeason($this->getReference('season_' . $i . $x));
+                $manager->persist($episode);
             }
-            $episode->setSeason($this->getReference(self::$seasons[$faker->numberBetween(0,4)]));
     
-            $manager->persist($episode);
         }
         $manager->flush();
     }
